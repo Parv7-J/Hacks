@@ -50,9 +50,10 @@ contract InsureChainAI {
     }
     
     // Constructor
-    constructor() {
+    constructor(uint256 _fraudScoreThreshold) {
+        require(_fraudScoreThreshold <= 100, "Threshold must be between 0 and 100");
         owner = msg.sender;
-        totalClaims = 0;
+        fraudScoreThreshold = _fraudScoreThreshold;
     }
     
     /**
